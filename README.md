@@ -1,4 +1,4 @@
-# 📝 MyBlog — Simple Blog Web Application
+# 📝 Simple Blog Web Application
 
 A lightweight blog web application built with **Node.js**, **Express.js**, and **EJS**. Supports full CRUD operations for blog posts with a clean and responsive UI — no database required.
 
@@ -35,7 +35,7 @@ A lightweight blog web application built with **Node.js**, **Express.js**, and *
 ## 📁 Project Structure
 
 ```
-my-blog-app/
+simple-blog-app/
 ├── public/
 │   └── css/
 │       └── style.css       # Styling
