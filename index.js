@@ -71,7 +71,7 @@ app.post('/posts', (req, res) => {
 // GET /posts/:id/edit → Tampilkan form edit post
 app.get('/posts/:id/edit', (req, res) => {
     const id = parseInt(req.params.id); //ambil id dari url
-    const post = post.find(p => p.id === id); //cari post dengan id tersebut
+    const post = posts.find(p => p.id === id); //cari post dengan id tersebut
 
     if (!post) {
         return res.status(404).send('Post tidak ditemukan!');
