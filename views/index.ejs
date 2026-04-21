@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+<div class="page-hero">
+  <h1>Blog Saya</h1>
+  <p>Kumpulan tulisan, cerita, dan ide yang saya bagikan.</p>
+</div>
+
+<% if (posts.length === 0) { %>
+  <!-- Tampilkan ini jika tidak ada post -->
+  <div class="empty-state">
+    <div class="empty-icon">📝</div>
+    <h2>Belum Ada Post</h2>
+    <p>Mulai tulis post pertama Anda sekarang!</p>
+    <a href="/posts/new" class="btn btn-primary">Tulis Post Pertama</a>
+  </div>
+<% } else { %>
+  <!-- Grid untuk menampilkan semua post -->
+  <div class="posts-grid">
+    <% posts.forEach(function(post) { %>
+      <article class="post-card">
+        <div class="post-card-body">
+          <div class="post-meta">
+            <span class="post-author">👤 <%= post.author %></span>
+            <span class="post-date">📅 <%= post.date %></span>
+          </div>
+          <h2 class="post-title"><%= post.title %></h2>
+          <p class="post-excerpt">
+            <%
+              // Potong konten jika lebih dari 150 karakter
+              let excerpt = post.content;
+              if (excerpt.length > 150) {
+                excerpt = excerpt.substring(0, 150) + '...';
+              }
+            %>
+            <%= excerpt %>
+          </p>
+        </div>
+        <div class="post-card-footer">
+          <a href="/posts/<%= post.id %>/edit" class="btn btn-secondary">✏️ Edit</a>
+          <!-- Form untuk Delete (pakai POST karena HTML form tidak support DELETE) -->
+          <form action="/posts/<%= post.id %>/delete" method="POST" class="delete-form"
+                onsubmit="return confirm('Yakin ingin menghapus post ini?')">
+            <button type="submit" class="btn btn-danger">🗑️ Hapus</button>
+          </form>
+        </div>
+      </article>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('partials/footer') %>

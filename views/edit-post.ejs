@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+
+<div class="page-hero">
+  <h1>✏️ Edit Post</h1>
+  <p>Perbarui tulisan Anda.</p>
+</div>
+
+<div class="form-container">
+  <!--
+    action="/posts/<%= post.id %>/update" → kirim ke route update
+    method="POST" → HTML form hanya support GET & POST
+  -->
+  <form action="/posts/<%= post.id %>/update" method="POST" class="post-form">
+
+    <div class="form-group">
+      <label for="title">Judul Post</label>
+      <!--
+        value="<%= post.title %>" → isi input dengan data post yang sudah ada
+        Ini yang membuat form edit berbeda dari form new post!
+      -->
+      <input
+        type="text"
+        id="title"
+        name="title"
+        value="<%= post.title %>"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="author">Nama Penulis</label>
+      <input
+        type="text"
+        id="author"
+        name="author"
+        value="<%= post.author %>"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="content">Isi Post</label>
+      <!--
+        Untuk textarea, value diletakkan di antara tag buka dan tutup
+      -->
+      <textarea
+        id="content"
+        name="content"
+        rows="12"
+        required
+      ><%= post.content %></textarea>
+    </div>
+
+    <div class="form-actions">
+      <a href="/" class="btn btn-secondary">← Batal</a>
+      <button type="submit" class="btn btn-primary">💾 Simpan Perubahan</button>
+    </div>
+
+  </form>
+</div>
+
+<%- include('partials/footer') %>
