@@ -81,7 +81,7 @@ app.get('/posts/:id/edit', (req, res) => {
 });
 
 // POST /posts/:id/update → Simpan perubahan edit
-app.post('posts/:id/update', (req, res) => {
+app.post('/posts/:id/update', (req, res) => {
     const id = parseInt(req.params.id);
     const { title, content, author } = req.body;
 
